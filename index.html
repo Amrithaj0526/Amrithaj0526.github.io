@@ -964,6 +964,43 @@
       width: 100%;
     }
 
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: var(--surface);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--border);
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      text-decoration: none;
+      z-index: 900;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(20px);
+      transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    }
+
+    .back-to-top.show {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
+    .back-to-top:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: var(--coral);
+      color: var(--coral);
+      transform: translateY(-5px);
+    }
+
     /* ANIMATIONS */
     @keyframes slideUp {
       from {
@@ -1134,6 +1171,7 @@
       <div class="hero-ctas">
         <a href="#projects" class="btn-primary">View Projects ↓</a>
         <a href="#contact" class="btn-ghost">Get In Touch →</a>
+        <a href="https://drive.google.com/file/d/1cdtQp5z5LrxcZEDduaJVd1q4tvUFWzC7/view?usp=drivesdk" target="_blank" class="btn-ghost">📄 Resume</a>
       </div>
       <div class="hero-stats">
         <div class="stat"><span class="stat-val">8.77</span><span class="stat-label">CGPA</span></div>
@@ -1283,7 +1321,7 @@
         <div class="glass-card reveal">
           <div class="section-label">// certifications</div>
           <h2 class="section-title" style="margin-bottom:40px;">Credentials</h2>
-          <a href="https://drive.google.com/file/d/YOUR_DRIVE_LINK_HERE" target="_blank" class="cert-item">
+          <a href="https://drive.google.com/file/d/1-6jFZTYhteLpH2dnHnSLco7mlc3UmRW0/view?usp=drivesdk" target="_blank" class="cert-item">
             <div class="cert-icon">📊</div>
             <div class="cert-info">
               <div class="cert-name">Data Analytics &amp; Power BI</div>
@@ -1291,7 +1329,7 @@
             </div>
             <div class="link-icon">↗</div>
           </a>
-          <a href="https://drive.google.com/file/d/YOUR_DRIVE_LINK_HERE" target="_blank" class="cert-item">
+          <a href="https://drive.google.com/file/d/16rptO8K9Ut66H7T26ckbmSgTNAvkKUR2/view?usp=drivesdk" target="_blank" class="cert-item">
             <div class="cert-icon">☁️</div>
             <div class="cert-info">
               <div class="cert-name">AWS Fundamentals</div>
@@ -1299,7 +1337,7 @@
             </div>
             <div class="link-icon">↗</div>
           </a>
-          <a href="https://drive.google.com/file/d/YOUR_DRIVE_LINK_HERE" target="_blank" class="cert-item">
+          <a href="https://drive.google.com/file/d/1V0GiTN1QZeA5y0VzHmYORJ62izlAF4R7/view?usp=drivesdk" target="_blank" class="cert-item">
             <div class="cert-icon">☕</div>
             <div class="cert-info">
               <div class="cert-name">Java Fundamentals</div>
@@ -1307,7 +1345,7 @@
             </div>
             <div class="link-icon">↗</div>
           </a>
-          <a href="https://drive.google.com/file/d/YOUR_DRIVE_LINK_HERE" target="_blank" class="cert-item">
+          <a href="#" target="_blank" class="cert-item">
             <div class="cert-icon">🤖</div>
             <div class="cert-info">
               <div class="cert-name">Introduction to LLMs</div>
@@ -1320,7 +1358,7 @@
         <div class="glass-card reveal" style="transition-delay: 0.1s;">
           <div class="section-label">// hackathons</div>
           <h2 class="section-title" style="margin-bottom:40px;">Competitions</h2>
-          <a href="https://drive.google.com/file/d/YOUR_DRIVE_LINK_HERE" target="_blank" class="hack-item">
+          <a href="#" target="_blank" class="hack-item">
             <div class="hack-icon">⚡</div>
             <div class="hack-info">
               <div class="hack-name">Prathiyogita Hackathon</div>
@@ -1328,7 +1366,7 @@
             </div>
             <div class="link-icon">↗</div>
           </a>
-          <a href="https://drive.google.com/file/d/YOUR_DRIVE_LINK_HERE" target="_blank" class="hack-item"
+          <a href="#" target="_blank" class="hack-item"
             style="align-items: flex-start;">
             <div class="hack-icon">🏆</div>
             <div class="hack-info">
@@ -1366,6 +1404,8 @@
 
   </div>
 
+  <a href="#hero" class="back-to-top" id="backToTop" aria-label="Back to top">↑</a>
+
   <script>
     const cursor = document.getElementById('cursor');
     const ring = document.getElementById('cursorRing');
@@ -1400,6 +1440,15 @@
       });
     }, { threshold: 0.3 });
     sections.forEach(s => navObs.observe(s));
+
+    const backToTop = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 500) {
+        backToTop.classList.add('show');
+      } else {
+        backToTop.classList.remove('show');
+      }
+    });
   </script>
 </body>
 
